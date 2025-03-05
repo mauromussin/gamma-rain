@@ -16,6 +16,7 @@ Following [@Villalobos] precipitation intensities tend to follow gamma distribut
 10. Displays the resulting plot with the y-axis set to a logarithmic scale.
 ## generalized Gamma distribution
 The probability density function (PDF) of the generalized Gamma distribution is given by:
+
 $$
 f(x; a, c, d, p) = \frac{p}{c \cdot \Gamma\left(\frac{a}{p}\right)} \left(\frac{x - d}{c}\right)^{\frac{a}{p} - 1} \exp\left[-\left(\frac{x - d}{c}\right)^p\right]
 $$
