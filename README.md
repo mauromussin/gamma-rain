@@ -3,6 +3,39 @@ This project uses a NetCDF file in which daily precipitation data are stored on 
 
 # Gamma distribution fitting
 Following [@Villalobos] precipitation intensities tend to follow gamma distributions: in order to compare two different periods (ie: actual and future) one can easily fit $$\Gamma$$ parameters and make some inference expecially on extremes probability.
+The PDF of rain follows:
+
+$$
+f(x; k, \theta) = \frac{1}{\theta^k \cdot \Gamma(a)} \cdot x ^{k - 1} \cdot e^\left(-\frac{x}{\theta}\right)
+$$
+where:
+
+- x is the daily precipitation (x>0)
+- k is the shape parameter
+- $\theta$ is the scale parameter
+- $\Gamma$(\cdot ) is the Gamma function
+
+or
+$$
+p (P) = A \cdot P ^  {-\tau _P} \cdot e ^ {- \frac{P}{P _L}}
+$$
+
+where:
+
+$\tau{_P}$ (<1) is a power law exponent governing the rate of decay of the PDF  
+P_L = $\theta$ can be regarded as a dailiy precipitation cutoff scale, where the pdf drops sharply
+
+In order to improve data fitting it is possible to use a generalized gamma funcion for PDF:
+
+$$
+f(x; a, c, \theta, d) = \frac{c}{\theta^a \cdot \Gamma(a/c)} \cdot \left( {{x-d}} \right)^{a-1} \cdot \exp \left( - \left( \frac{x-d}{\theta} \right)^c \right)
+$$
+where:
+
+a: is the main shape parameter. It controls the PDF shape expecially on the tail.  
+c: is the additional shape parameter. It offers more flexibility and fits more distributions.  
+$\theta$ : is the scale parameter. It drives the span of the PDF: the higher $\theta$ the narrover the PDF.  
+d: is the shift factor: follows the minimum of the precipitaton values. If all daily precipitation data are > 1mm could be set  =1
 ## pseudocode
 1. Opens the NetCDF file using xarray.
 2. Extracts precipitation data and converts the dates to pandas format.
