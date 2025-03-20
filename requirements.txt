@@ -6,4 +6,4 @@ netCDF4
 dask
 bottleneck
 matplotlib
-zenodo-get
+cartopy
